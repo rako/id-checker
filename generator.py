@@ -19,12 +19,14 @@ def validate_input(input_data):
     return False
 
 # ユーザ名の長さを入力させ、バリデーションチェックが通らなければ再度入力させる。英数字は半角、カタカナは全角に変換する。環境依存文字も変換しておく。
-username_length_str = ""
-while(validate_input(username_length_str) == False):
+username_length = 0
+while(True):
     print("1~15までの好きな長さの数字を入力してください。")
     input_data = input()
-    username_length_str = unicodedata.normalize('NFKC',input_data)
-username_length = int(username_length_str)
+    username_length = unicodedata.normalize('NFKC',input_data)
+    if validate_input(username_length):
+        break 
+username_length = int(username_length)
 
 # ユーザ名を生成する関数。
 def generate_username(username_length):
