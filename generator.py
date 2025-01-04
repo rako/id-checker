@@ -24,7 +24,7 @@ while(True):
     print("1~15までの好きな長さの数字を入力してください。")
     input_data = input()
     username_length = unicodedata.normalize('NFKC',input_data)
-    if validate_input(username_length):
+    if validate_input(username_length): #バリデーションチェック通ったら終わる
         break 
 username_length = int(username_length)
 
@@ -34,4 +34,5 @@ def generate_username(username_length):
     username = ''.join(username_list) #ここをusername = "".join(username)にすると、メソッドが呼ばれたままになる
     return username
 
-print(generate_username(username_length))
+username = generate_username(username_length)
+print(username)
